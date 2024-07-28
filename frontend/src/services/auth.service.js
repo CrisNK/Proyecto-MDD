@@ -16,7 +16,7 @@ export async function login(data) {
 
 export async function register(data) {
     try {
-        const response = await axios.post('/auth/register', data);
+        const response = await axios.post('/emprendedor/crearEmprendedor', data);
         return response.data;
     } catch (error) {
         throw error.response?.data || error.message;

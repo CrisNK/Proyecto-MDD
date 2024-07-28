@@ -21,19 +21,31 @@ const Register = () => {
 				fields={[
 					{
 						label: "Nombre de usuario",
-						name: "username",
-						placeholder: "Didudo",
+						name: "nombreEmprendedor",
+						placeholder: "",
 						type: "text",
+					},
+					{
+						label: "Nombre de emprendimiento",
+						name: "nombreEmprendimiento",
+						placeholder: "",
+						type: "text",
+					},					
+					{
+						label: "Número de contacto",
+						name: "numeroContacto",
+						placeholder: "9 1234 5678",
+						type: "tel",
 					},
                     {
 						label: "Correo electrónico",
-                        name: "email",
+                        name: "correo",
                         placeholder: "example@gmail.com",
                         type: "email",
                     },
                     {
 						label: "RUT",
-                        name: "rut",
+                        name: "rutEmprendedor",
                         placeholder: "23.770.330-1",
                         type: "text",
                     },
