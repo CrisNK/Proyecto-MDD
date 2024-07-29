@@ -13,7 +13,7 @@ import indexRoutes from "./routes/index.routes.js";
 // Importa el archivo 'configDB.js' para crear la conexión a la base de datos
 import { connectDB } from "./config/configDB.js";
 // Importa la funcion para crear roles y usuarios
-import { createRoles, createUsers } from "./config/initSetup.js";
+import { createRoles, createAdmin } from "./config/initSetup.js";
 
 /**
  * Inicia el servidor web
@@ -63,8 +63,8 @@ async function setupAPI() {
     await setupServer();
     // Inicia la creación de los roles
     await createRoles();
-    // Inicia la creación del usuario admin y user
-    await createUsers();
+    // Inicia la creación del admin
+    await createAdmin();
   } catch (err) {
     console.log('Error en server.js -> setupAPI(): ', err);
   }

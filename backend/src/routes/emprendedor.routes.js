@@ -14,9 +14,9 @@ const router = Router();
 router.post("/crearEmprendedor", crearEmprendedor);
 router.post("/loginEmprendedor", emprendedorLogin);
 router.get("/perfil", perfil);
-router.put("/modificarEmprendedor", isEmprendedor, modificarEmprendedor);
+router.put("/modificarEmprendedor", modificarEmprendedor);
 router.get("/obtenerEmprendedor", obtenerEmprendedor);
 router.get("/emprendedores", obtenerEmprendedores);
-router.delete("/noEmprendedor", isEmprendedor, eliminarEmprendedor);
+router.delete("/noEmprendedor", eliminarEmprendedor);
 
 export default router;

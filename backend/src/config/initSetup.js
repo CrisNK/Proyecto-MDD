@@ -18,7 +18,7 @@ export async function createRoles() {
     if (count > 0) return;
 
     await Promise.all([
-      new Role({ name: "usuario" }).save(),
+      new Role({ name: "asistente" }).save(),
       new Role({ name: "emprendedor" }).save(),
       new Role({ name: "administrador" }).save(),
     ]);
@@ -34,35 +34,31 @@ export async function createRoles() {
  * @function createUsers
  * @returns {Promise<void>}
  */
-export async function createUsers() {
+export async function createAdmin() {
   try {
     // Busca todos los usuarios en la base de datos
     const count = await User.estimatedDocumentCount();
     // Si no hay usuarios en la base de datos los crea
     if (count > 0) return;
 
-    const admin = await Role.findOne({ name: "administrador" });
-    const emprendedor = await Role.findOne({ name: "emprendedor" });
-    const user = await Role.findOne({ name: "usuario" });
+    const adminRole = await Role.findOne({ name: "administrador" });
+
+    if (!adminRole) {
+      console.log("Error: El rol con el ID proporcionado no se encuentra en la base de datos.");
+      return;
+    }
 
     await Promise.all([
       new User({
-        username: "Nombre Usuario",
-        email: "user@gmail.com",
-        rut: "12345678-9",
-        password: await User.encryptPassword("user123"),
-        roles: user._id,
-      }).save(),
-      new User({
-        username: "Nombre Administrador",
-        email: "admin@gmail.com",
+        username: "DDE",
+        email: "ddeconcepcion@ubiobio.cl",
         rut: "12345678-0",
-        password: await User.encryptPassword("admin123"),
-        roles: admin._id,
+        password: await User.encryptPassword("ddeconcepcion"),
+        roles: adminRole._id,
       }).save(),
     ]);
-    console.log("* => Usuarios creados exitosamente");
+    console.log("* => Administrador creado exitosamente");
   } catch (error) {
-    console.log("Error en initSetup.js -> createUsers(): ", error);
+    console.log("Error en initSetup.js -> createAdmin(): ", error);
   }
 }

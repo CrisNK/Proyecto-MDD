@@ -20,47 +20,47 @@ const Register = () => {
 				title="Crea tu cuenta"
 				fields={[
 					{
+						label: "RUT",
+						name: "rut",
+						placeholder: "23.770.330-1",
+						type: "text",
+					},
+					{
 						label: "Nombre de usuario",
-						name: "nombreEmprendedor",
+						name: "nombre",
 						placeholder: "",
 						type: "text",
 					},
 					{
 						label: "Nombre de emprendimiento",
-						name: "nombreEmprendimiento",
+						name: "emprendimiento",
 						placeholder: "",
 						type: "text",
 					},					
 					{
-						label: "Número de contacto",
-						name: "numeroContacto",
-						placeholder: "9 1234 5678",
-						type: "tel",
-					},
-                    {
 						label: "Correo electrónico",
-                        name: "correo",
-                        placeholder: "example@gmail.com",
-                        type: "email",
-                    },
-                    {
-						label: "RUT",
-                        name: "rutEmprendedor",
-                        placeholder: "23.770.330-1",
-                        type: "text",
-                    },
+						name: "correo",
+						placeholder: "example@gmail.com",
+						type: "email",
+					},
 					{
 						label: "Contraseña",
 						name: "password",
 						placeholder: "*********",
 						type: "password",
 					},
+					{
+						label: "Número de contacto",
+						name: "numeroContacto",
+						placeholder: "9 1234 5678",
+						type: "tel",
+					}
 				]}
 				buttonText="Registrarse"
 				onSubmit={registerSubmit}
 				footerContent={
 					<p>
-						¿Ya tienes cuenta?, <a href="/">Inicia sesión aquí!</a>
+						¿Ya tienes cuenta?, <a href="/login">Inicia sesión aquí!</a>
 					</p>
 				}
 			/>

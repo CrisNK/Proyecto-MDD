@@ -1,14 +1,14 @@
 "use strict";
-// Importa el modelo de datos 'Role'
-import Role from "../models/role.model.js";
 // Importa el modelo de datos 'User'
 import User from "../models/user.model.js";
+import Role from "../models/role.model.js";
+import ROLES from "../constants/roles.constants.js"
 
 export async function login(req, res){
     try {
         const user = req.body;
 
-        const userFound = await User.findOne({ email: user.email })
+        const userFound = await User.findOne({ correo: user.correo })
             .populate("roles")
             .exec();
 
@@ -51,29 +51,32 @@ export async function register(req, res) {
     try {
         const userData = req.body;
 
-        const existingUser = await User.findOne({ email: userData.email });
+        const existingUser = await User.findOne({ correo: userData.correo });
 
         if (existingUser) {
             return res.status(400).json({ message: "El correo electrónico ya está registrado." });
         }
 
+        const role = await Role.findOne({ name: ROLES.EMPRENDEDOR });
 
-        const userRole = await Role.findOne({ name: 'usuario' });
-        if (!userRole) {
-            return res.status(500).json({ message: "Error al asignar el rol de usuario." });
+        if (!role) {
+            return res.status(500).json({ message: "Rol 'emprendedor' no encontrado." });
         }
 
         const newUser = new User({
-            username: userData.username,
-            email: userData.email,
             rut: userData.rut,
+            nombre: userData.nombre,
+            emprendimiento: userData.emprendimiento,
+            correo: userData.correo,
             password: await User.encryptPassword(userData.password),
-            roles: [userRole._id]
+            numeroContacto: userData.numeroContacto,
+            roles: [role._id]
         });
+        
         await newUser.save();
 
         res.status(201).json({ 
-            message: "Usuario registrado exitosamente",
+            message: "Emprendedor registrado exitosamente",
             data: newUser
         });
     } catch (error) {

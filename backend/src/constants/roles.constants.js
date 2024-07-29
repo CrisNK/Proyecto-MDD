@@ -1,4 +1,8 @@
 /** Roles permitidos por la base de datos */
-const ROLES = ["usuario","administrador","emprendedor"];
+const ROLES = {
+    ASISTENTE: "asistente",
+    ADMINISTRADOR: "administrador",
+    EMPRENDEDOR: "emprendedor"
+};
 
 export default ROLES;
