@@ -1,7 +1,6 @@
 "use strict";
 import Evento from '../models/evento.model.js';
 import Product from '../models/productos.model.js';
-import Emprendedor from '../models/emprendedor.model.js';
 
 // Crear un nuevo producto
 async function crearProducto(req, res) {

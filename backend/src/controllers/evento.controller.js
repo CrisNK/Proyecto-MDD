@@ -2,8 +2,6 @@
 
 import Evento from '../models/evento.model.js';
 import Form from '../models/inscripciones.model.js';
-import Emprendedor  from '../models/emprendedor.model.js';
-
 
 export async function crearEvento(req, res){
     try {

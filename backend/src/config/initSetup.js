@@ -18,7 +18,6 @@ export async function createRoles() {
     if (count > 0) return;
 
     await Promise.all([
-      new Role({ name: "asistente" }).save(),
       new Role({ name: "emprendedor" }).save(),
       new Role({ name: "administrador" }).save(),
     ]);
@@ -38,7 +37,7 @@ export async function createAdmin() {
   try {
     // Busca todos los usuarios en la base de datos
     const count = await User.estimatedDocumentCount();
-    // Si no hay usuarios en la base de datos los crea
+    // Si no hay usuarios en la base de datos crea un admin
     if (count > 0) return;
 
     const adminRole = await Role.findOne({ name: "administrador" });
@@ -50,9 +49,9 @@ export async function createAdmin() {
 
     await Promise.all([
       new User({
-        username: "DDE",
-        email: "ddeconcepcion@ubiobio.cl",
         rut: "12345678-0",
+        nombre: "DDE",
+        correo: "ddeconcepcion@ubiobio.cl",
         password: await User.encryptPassword("ddeconcepcion"),
         roles: adminRole._id,
       }).save(),
