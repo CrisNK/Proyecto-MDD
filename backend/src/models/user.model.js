@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema(
     },
     correo: {
       type: String,
+      required: true,
       unique: true,
     },
     password: {
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema(
     numeroContacto: {
       type: Number,
     },
-    roles: [
+    rol: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",
