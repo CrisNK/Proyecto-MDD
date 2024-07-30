@@ -9,7 +9,7 @@ export async function login(req, res){
         const user = req.body;
 
         const userFound = await User.findOne({ correo: user.correo })
-            .populate("roles")
+            .populate("rol")
             .exec();
 
         if (userFound === null) {
@@ -28,15 +28,14 @@ export async function login(req, res){
                 message: "La contraseña es incorrecta"
             });
         }
-
         req.session.user = {
             rut: userFound.rut,
             nombre: userFound.nombre,
             emprendimiento: userFound.emprendimiento,
             correo: userFound.correo,
             password: userFound.password,
-            rolName: userFound.roles[0].name
-        };
+            rol: userFound.rol
+        }
 
         res.status(200).json({
             message: "Inicio de sesión exitoso!",
@@ -52,6 +51,13 @@ export async function login(req, res){
 export async function register(req, res) {
     try {
         const userData = req.body;
+        
+        const rolEmprendedor = await Role.findOne({ name: ROLES.EMPRENDEDOR });
+
+        if (!rolEmprendedor) {
+            console.log("Error: El rol 'emprendedor' no se encuentra en la base de datos.");
+            return;
+        }
 
         const existingUser = await User.findOne({ correo: userData.correo });
 
@@ -72,7 +78,7 @@ export async function register(req, res) {
             correo: userData.correo,
             password: await User.encryptPassword(userData.password),
             numeroContacto: userData.numeroContacto,
-            roles: [role._id]
+            rol: [rolEmprendedor._id],
         });
         
         await newUser.save();
