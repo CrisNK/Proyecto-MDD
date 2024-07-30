@@ -9,7 +9,7 @@ import EditUser from './pages/EditUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import Users from './pages/Users';
 import Inscripcion from './pages/Inscripcion';
-import Evento from './pages/CrearEvento';
+import Eventos from './pages/CrearEventos';
 const AppRouter = () => {
   return (
     <Routes>
@@ -25,14 +25,11 @@ const AppRouter = () => {
           <Inscripcion />
         } 
       />
-      <Route 
-        path="/Evento" // Creo mi ruta para evento
-        
+      <Route
+        path="/evento"
         element={
-          //<ProtectedRoute allowedRoles={['administrador']}> 
-          <Evento />
-          //</ProtectedRoute>
-        } 
+          <Eventos />
+        }
       />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

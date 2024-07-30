@@ -2,6 +2,14 @@ import Form from '../components/Form.jsx';
 import { CrearEvento } from '../services/evento.service.js'
 
 function Eventos(){
+    const EnviarFormulario = async (data) => { // Define una funcion que recibe un parametro data
+        try {
+            await CrearEvento(data); // Llama a la funcion con el parametro data y espera a que se complete
+            console.log('Evento Creado Existosamente');
+        } catch (error) {
+            console.error('Error al crear evento',error);
+        }
+    };
     return (
         <main className="container">
             
@@ -59,7 +67,7 @@ function Eventos(){
                     },
                 ]}  
                 buttonText="Crear"
-                onSubmit ={CrearEvento}
+                onSubmit ={EnviarFormulario}
             />
             
 
