@@ -11,10 +11,7 @@ const roleSchema = new Schema(
       enum: ROLES,
       required: true,
     },
-  },
-  {
-    versionKey: false,
-  },
+  }, { versionKey: false },
 );
 
 // Crea el modelo de datos 'Role' a partir del esquema 'roleSchema'

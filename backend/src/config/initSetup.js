@@ -3,6 +3,7 @@
 import Role from "../models/role.model.js";
 // Importa el modelo de datos 'User'
 import User from "../models/user.model.js";
+import ROLES from "../constants/roles.constants.js";
 
 /**
  * Crea los roles por defecto en la base de datos.
@@ -18,8 +19,8 @@ export async function createRoles() {
     if (count > 0) return;
 
     await Promise.all([
-      new Role({ name: "emprendedor" }).save(),
-      new Role({ name: "administrador" }).save(),
+      new Role({ name: ROLES.EMPRENDEDOR }).save(),
+      new Role({ name: ROLES.ADMINISTRADOR }).save(),
     ]);
     console.log("* => Roles creados exitosamente");
   } catch (error) {
@@ -40,10 +41,10 @@ export async function createAdmin() {
     // Si no hay usuarios en la base de datos crea un admin
     if (count > 0) return;
 
-    const adminRole = await Role.findOne({ name: "administrador" });
+    const adminRole = await Role.findOne({ name: ROLES.ADMINISTRADOR });
 
     if (!adminRole) {
-      console.log("Error: El rol con el ID proporcionado no se encuentra en la base de datos.");
+      console.log("Error: El rol 'administrador' no se encuentra en la base de datos.");
       return;
     }
 
@@ -53,7 +54,7 @@ export async function createAdmin() {
         nombre: "DDE",
         correo: "ddeconcepcion@ubiobio.cl",
         password: await User.encryptPassword("ddeconcepcion"),
-        roles: adminRole._id,
+        rol: [adminRole._id],
       }).save(),
     ]);
     console.log("* => Administrador creado exitosamente");
