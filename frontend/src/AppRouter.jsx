@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Users from './pages/Users';
 import Inscripcion from './pages/Inscripcion';
 import Eventos from './pages/CrearEventos';
+import VerEventos from './pages/ListaEventos';
 const AppRouter = () => {
   return (
     <Routes>
@@ -28,7 +29,17 @@ const AppRouter = () => {
       <Route
         path="/evento"
         element={
+        <ProtectedRoute>  
           <Eventos />
+         </ProtectedRoute>
+        }
+      />
+        <Route
+        path="/vereventos" 
+        element={
+          //<ProtectedRoute>
+            <VerEventos />
+          //</ProtectedRoute>
         }
       />
       <Route path="/login" element={<Login />} />
@@ -50,6 +61,7 @@ const AppRouter = () => {
           </ProtectedRoute>
         } 
       />
+    
       <Route 
         path="/profile" 
         element={

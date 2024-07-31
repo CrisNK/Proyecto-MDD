@@ -43,6 +43,9 @@ const Navbar = ({ isHomePage }) => {
                                 <NavLink to="/users">Usuarios</NavLink>
                             </li>
                         )}
+                        <li className={location.pathname === "/evento" ? "active" : ""}>
+                            <NavLink to="/vereventos">Eventos</NavLink>
+                        </li>
                         <li className={location.pathname === "/perfil" ? "active" : ""}>
                             <NavLink to="/profile">Perfil</NavLink>
                         </li>
