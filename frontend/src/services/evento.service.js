@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './root.service.js';
 
 export async function CrearEvento(data){
     try {
@@ -11,6 +11,16 @@ export async function CrearEvento(data){
 export async function ObtenerEventos() {
     try {
       const response = await axios.get('/evento/obtener');
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || error.message;
+    }
+  }
+
+  export async function modificarEventos(data) {
+    try {
+      console.log('Enviando datos:', data);
+      const response = await axios.put(`/evento/update/${data.eventoID}`,data);      
       return response.data;
     } catch (error) {
       throw error.response?.data || error.message;

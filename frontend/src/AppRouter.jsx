@@ -9,7 +9,8 @@ import EditUser from './pages/EditUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import Users from './pages/Users';
 import Inscripcion from './pages/Inscripcion';
-import Eventos from './pages/CrearEventos';
+import EditarEvento from './pages/editarEvento';
+
 const AppRouter = () => {
   return (
     <Routes>
@@ -26,9 +27,9 @@ const AppRouter = () => {
         } 
       />
       <Route
-        path="/evento"
+        path="/modificarEvento"
         element={
-          <Eventos />
+          <EditarEvento />
         }
       />
       <Route path="/login" element={<Login />} />
@@ -45,9 +46,9 @@ const AppRouter = () => {
       <Route 
         path="/users" 
         element={
-          <ProtectedRoute allowedRoles={['administrador']}>
+         // <ProtectedRoute allowedRoles={['administrador']}>
             <Users />
-          </ProtectedRoute>
+         // </ProtectedRoute>
         } 
       />
       <Route 

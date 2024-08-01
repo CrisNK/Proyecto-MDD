@@ -8,33 +8,40 @@ import bcrypt from "bcryptjs";
 // Crear la colección de usuarios
 const userSchema = new mongoose.Schema(
   {
+    username: {
+      type: String,
+      required: true,
+    },
     rut: {
-      type:String,
-    },
-    nombre: {
-      type: String,
-    },
-    emprendimiento: {
-      type: String,
-    },
-    correo: {
       type: String,
       required: true,
       unique: true,
     },
+    emprendimiento: {
+      type: String,
+      unique: true,
+    },
     password: {
       type: String,
+      required: true,
     },
-    numeroContacto: {
-      type: Number,
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    rol: [
+    roles: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",
       },
     ],
-  }, { versionKey: false });
+  },
+  {
+    versionKey: false,
+  },
+);
+
 
 // Contraseña del usuario encriptada
 userSchema.statics.encryptPassword = async (password) => {
@@ -46,6 +53,7 @@ userSchema.statics.encryptPassword = async (password) => {
 userSchema.statics.comparePassword = async (password, receivedPassword) => {
   return await bcrypt.compare(password, receivedPassword);
 };
+
 
 // Modelo de datos de usuario
 const User = mongoose.model("User", userSchema, "Usuarios");
