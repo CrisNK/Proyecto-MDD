@@ -1,13 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Form from '../components/Form';
 import { postAsistencia } from '../services/asistencia.service';
 import '../styles/form.css'
 function Asistencia() {
+    const { eventoID } = useParams();
     const navigate = useNavigate();
 
     const asistenciaSubmit = async (data) => {
         try {
-            const response = await postAsistencia(data);
+            const response = await postAsistencia(data, eventoID);
             if (response && response.status === 201) {
                 setTimeout(() => {
                     navigate('/');
@@ -23,13 +24,6 @@ function Asistencia() {
             <Form
                 title="Asistencia a evento"
                 fields={[
-                    {
-                        label: "Id del evento",
-                        name: "eventoID",
-                        placeholder: "Identificador del evento",
-                        type: "text",
-                        required: true,
-                    },
                     {
                         label: "Correo electrónico",
                         name: "email",

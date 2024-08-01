@@ -6,7 +6,7 @@ const Navbar = ({ isHomePage }) => {
     const location = useLocation();
     const navigate = useNavigate();
     const [storedUser, setStoredUser] = useState(JSON.parse(sessionStorage.getItem('usuario')));
-
+    const [nombreEvento, setNombreEvento] = useState('');
     const userRole = storedUser?.data?.rolName;
 
     const logoutSubmit = () => {
@@ -17,6 +17,17 @@ const Navbar = ({ isHomePage }) => {
             navigate('/');
         } catch (error) {
             console.error('Error al cerrar sesión:', error);
+        }
+    };
+
+    const handleInputChange = (event) => {
+        setNombreEvento(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Evita el envío por defecto del formulario
+        if (nombreEvento.trim()) {
+            navigate(`/evento/buscar/${encodeURIComponent(nombreEvento)}`); // Redirige usando el valor del input
         }
     };
 
@@ -32,6 +43,18 @@ const Navbar = ({ isHomePage }) => {
                         src="/cohete.png"
                         alt="Logo metodología de desarrollo"
                     />
+                </li>
+                <li>
+                    <form onSubmit={handleSubmit} className="search-container">
+                        <input
+                            name="query"
+                            className="search-bar"
+                            placeholder="Buscador de eventos"
+                            value={nombreEvento}
+                            onChange={handleInputChange}
+                        />
+                        <button type="submit" className="search-button">Buscar</button>
+                    </form>
                 </li>
                 {storedUser ? (
                     <>
