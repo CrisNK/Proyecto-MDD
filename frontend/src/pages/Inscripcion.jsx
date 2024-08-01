@@ -1,32 +1,47 @@
-import { useNavigate } from 'react-router-dom';
-import Form from '../components/Form';
-import { postAsistencia } from '../services/asistencia.service';
-import '../styles/form.css'
-function Inscripcion() {
+import { useNavigate } from "react-router-dom";
+import Form from "../components/Form";
+import { postInscripcion } from "../services/inscripcion.service";
+
+function Inscripcion()  {
+
     const navigate = useNavigate();
 
-    const asistenciaSubmit = async (data) => {
-        try {
-            const response = await postAsistencia(data);
-            if (response && response.status === 201) {
-                setTimeout(() => {
-                    navigate('/');
-                }, 1600);
+    const inscripcionSubmit = (data) => {
+        console.log('Datos del formulario:', data); // Ver los datos del formulario
+        postInscripcion(data).then(() => {
+            navigate('/');
+        }).catch((error) => {
+            // Verificar el contenido del error
+            console.error('Error en la inscripción:', error);
+            // Verificar si el mensaje de error contiene información específica
+            if (error.response && error.response.data) {
+                console.error('Detalles del error:', error.response.data);
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        });
     };
-
     return (
-        <div className='form-container'>
+        <>
             <Form
-                title="Asistencia a evento"
+                title="Inscripción"
                 fields={[
                     {
-                        label: "Id del evento",
-                        name: "eventoID",
-                        placeholder: "Identificador del evento",
+                        label: "Nombre del evento",
+                        name: "nombreEvento",
+                        placeholder: "Eventoo",
+                        type: "text",
+                        required: true,
+                    },
+                    {
+                        label: "Nombre del emprendimiento",
+                        name: "nombreEmprendimiento",
+                        placeholder: "Los piriwines",
+                        type: "text",
+                        required: true,
+                    },
+                    {
+                        label: "Nombre del emprendedor",
+                        name: "nombreEmprendedor",
+                        placeholder: "El piriwin",
                         type: "text",
                         required: true,
                     },
@@ -40,16 +55,24 @@ function Inscripcion() {
                     {
                         label: "Numero de contacto",
                         name: "numeroContacto",
-                        placeholder: "9 93730784",
+                        placeholder: "Los piriwines",
+                        type: "number",
+                        required: true,
+                    },
+                    {
+                        label: "Id del evento",
+                        name: "eventoId",
+                        placeholder: "0123012030",
                         type: "text",
                         required: true,
                     },
+                    
                 ]}
                 buttonText="Inscribirme"
-                onSubmit={asistenciaSubmit}
+                onSubmit={inscripcionSubmit}
             />
-        </div>
-    );
+        </>
+    )
 }
 
 export default Inscripcion;

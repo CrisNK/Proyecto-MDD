@@ -8,6 +8,7 @@ import Error404 from './pages/Error404';
 import EditUser from './pages/EditUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import Users from './pages/Users';
+import Asistencia from './pages/Asistencia';
 import Inscripcion from './pages/Inscripcion';
 const AppRouter = () => {
   return (
@@ -19,7 +20,13 @@ const AppRouter = () => {
         } 
       />
       <Route 
-        path="/inscripcion" 
+        path="/asistencia" 
+        element={
+          <Asistencia />
+        } 
+      />
+      <Route 
+        path="/inscripciones/inscribir" 
         element={
           <Inscripcion />
         } 
