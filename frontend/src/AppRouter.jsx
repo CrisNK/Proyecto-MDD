@@ -10,6 +10,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Users from './pages/Users';
 import Asistencia from './pages/Asistencia';
 import Inscripcion from './pages/Inscripcion';
+import EditarEvento from './pages/editarEvento';
+
 const AppRouter = () => {
   return (
     <Routes>
@@ -31,6 +33,12 @@ const AppRouter = () => {
           <Inscripcion />
         } 
       />
+      <Route
+        path="/modificarEvento"
+        element={
+          <EditarEvento />
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       {/* Rutas protegidas */}
@@ -45,9 +53,9 @@ const AppRouter = () => {
       <Route 
         path="/users" 
         element={
-          <ProtectedRoute allowedRoles={['administrador']}>
+         // <ProtectedRoute allowedRoles={['administrador']}>
             <Users />
-          </ProtectedRoute>
+         // </ProtectedRoute>
         } 
       />
       <Route 
