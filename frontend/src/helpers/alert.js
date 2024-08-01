@@ -19,3 +19,21 @@ export const showErrorAlert = () => {
         timer: 1500,
       });
 }
+export const ShowCreateEventAlert = () => {
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Evento Creado Exitosamente",
+    showConfirmButton: false,
+    timer: 1500
+  });
+}
+export const showErrorCreateEventAlert = () => {
+  Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Error al Crear Evento",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+}

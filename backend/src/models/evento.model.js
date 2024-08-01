@@ -18,7 +18,8 @@ const eventoSchema = new mongoose.Schema({
     },
     fecha: {
         type: Date,
-        required: true
+        required: true,
+        get: v => v.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
     },
     hora: {
         type: String,
