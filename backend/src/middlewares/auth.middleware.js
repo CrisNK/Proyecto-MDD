@@ -28,10 +28,12 @@ async function isAdmin(req, res, next) {
     return res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
-// Funcion para validar el rol de user
+
+//valida rol emprendedor
 async function isEmprendedor(req, res, next) {
   try {
     // Verifica si hay un usuario autenticado en la sesión
+    console.log(req.session.user)
     if (!req.session.user) {
       return res.status(401).json({ message: 'No estás autenticado' });
     }
@@ -39,8 +41,10 @@ async function isEmprendedor(req, res, next) {
     // Obtiene el rol del usuario de la sesión
     const userRole = req.session.user.rolName;
 
-    // Verifica si el usuario tiene el rol de usuario
+    // Verifica si el usuario tiene el rol de emprendedor
     if (userRole === 'emprendedor') {
+      // Configura req.user con la informacion del usuario
+      req.user = req.session.user;
       // El usuario tiene el rol adecuado, continua con la siguiente función de middleware
       next();
       return;
@@ -49,9 +53,8 @@ async function isEmprendedor(req, res, next) {
       return res.status(403).json({ message: 'No tienes permisos para acceder a este recurso' });
     }
   } catch (error) {
-    console.log("Error en auth.middleware.js -> isUser(): ", error);
+    console.log("Error en auth.middleware.js -> isEmprendedor(): ", error);
     return res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
-
 export {isAdmin , isEmprendedor};
