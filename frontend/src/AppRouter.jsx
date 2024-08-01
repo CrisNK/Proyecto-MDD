@@ -12,6 +12,9 @@ import Asistencia from './pages/Asistencia';
 import Inscripcion from './pages/Inscripcion';
 import EditarEvento from './pages/editarEvento';
 import BuscarEvento from './pages/BuscarEvento';
+import Eventos from './pages/CrearEventos';
+import VerEvento from './pages/ListaEventos';
+import VerEventos from './pages/ListaEventos';
 
 const AppRouter = () => {
   return (
@@ -41,6 +44,20 @@ const AppRouter = () => {
         }
       />
       <Route path="/evento/buscar/:nombreEvento" element={<BuscarEvento /> } />
+      <Route
+        path="/evento"
+        element={
+          <ProtectedRoute allowedRoles={['administrador']}>
+            <Eventos />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/verevento"
+        element={
+          <VerEventos />
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       {/* Rutas protegidas */}
@@ -55,11 +72,12 @@ const AppRouter = () => {
       <Route 
         path="/users" 
         element={
-         // <ProtectedRoute allowedRoles={['administrador']}>
+         <ProtectedRoute allowedRoles={['administrador']}>
             <Users />
-         // </ProtectedRoute>
+         </ProtectedRoute>
         } 
       />
+    
       <Route 
         path="/profile" 
         element={

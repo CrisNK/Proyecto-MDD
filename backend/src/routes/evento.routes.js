@@ -10,11 +10,11 @@ const router = Router();
 
 router.get("/buscar/:nombreEvento", buscarEvento);
 
+router.get("/obtener", obtenerEventos);
 // Proteger todas las rutas con middleware de autenticación de administrador
 router.use(isAdmin);
 
 router.post("/crearevento", crearEvento);
-router.get("/obtener", obtenerEventos);
 router.put("/update/:id", actualizarEvento);
 router.delete("/delete/:id", eliminarEvento);
 router.post("/confirmarAsistencia", confirmarAsistencia);
