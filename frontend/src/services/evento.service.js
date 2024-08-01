@@ -17,7 +17,7 @@ export async function ObtenerEventos() {
     }
   }
 
-  export async function modificarEventos(data) {
+export async function modificarEventos(data) {
     try {
       console.log('Enviando datos:', data);
       const response = await axios.put(`/evento/update/${data.eventoID}`,data);      
@@ -25,4 +25,17 @@ export async function ObtenerEventos() {
     } catch (error) {
       throw error.response?.data || error.message;
     }
+}
+
+export async function BuscarEventos(nombreEvento) {
+  try {
+    const response = await axios.get(`/evento/buscar/${nombreEvento}`);
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error(response.data.message || "Error desconocido.");
+    }
+  } catch (error) {
+    throw error.response?.data || error.message;
   }
+}

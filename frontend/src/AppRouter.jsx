@@ -11,6 +11,7 @@ import Users from './pages/Users';
 import Asistencia from './pages/Asistencia';
 import Inscripcion from './pages/Inscripcion';
 import EditarEvento from './pages/editarEvento';
+import BuscarEvento from './pages/BuscarEvento';
 
 const AppRouter = () => {
   return (
@@ -22,7 +23,7 @@ const AppRouter = () => {
         } 
       />
       <Route 
-        path="/asistencia" 
+        path="/asistencia/:eventoID" 
         element={
           <Asistencia />
         } 
@@ -39,6 +40,7 @@ const AppRouter = () => {
           <EditarEvento />
         }
       />
+      <Route path="/evento/buscar/:nombreEvento" element={<BuscarEvento /> } />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       {/* Rutas protegidas */}
