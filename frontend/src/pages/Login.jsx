@@ -20,7 +20,7 @@ const Login = () => {
                 fields={[
                     {
                         label: "Correo electrónico",
-                        name: "correo",
+                        name: "email",
                         placeholder: "example@gmail.com",
                         type: "email",
                         required: true,

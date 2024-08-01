@@ -1,15 +1,15 @@
 "use strict";
+// Importa el modelo de datos 'Role'
+import Role from "../models/role.model.js";
 // Importa el modelo de datos 'User'
 import User from "../models/user.model.js";
-import Role from "../models/role.model.js";
-import ROLES from "../constants/roles.constants.js"
 
 export async function login(req, res){
     try {
         const user = req.body;
 
-        const userFound = await User.findOne({ correo: user.correo })
-            .populate("rol")
+        const userFound = await User.findOne({ email: user.email })
+            .populate("roles")
             .exec();
 
         if (userFound === null) {
@@ -23,19 +23,19 @@ export async function login(req, res){
             userFound.password
         );
 
-        if (!matchPassword){
+        if (!matchPassword) {
             return res.status(400).json({
                 message: "La contraseña es incorrecta"
             });
         }
+
         req.session.user = {
+            username: userFound.username,
             rut: userFound.rut,
-            nombre: userFound.nombre,
             emprendimiento: userFound.emprendimiento,
-            correo: userFound.correo,
-            password: userFound.password,
-            rol: userFound.rol
-        }
+            email: userFound.email,
+            rolName: userFound.roles[0].name
+        };
 
         res.status(200).json({
             message: "Inicio de sesión exitoso!",
@@ -51,40 +51,31 @@ export async function login(req, res){
 export async function register(req, res) {
     try {
         const userData = req.body;
-        
-        const rolEmprendedor = await Role.findOne({ name: ROLES.EMPRENDEDOR });
 
-        if (!rolEmprendedor) {
-            console.log("Error: El rol 'emprendedor' no se encuentra en la base de datos.");
-            return;
-        }
-
-        const existingUser = await User.findOne({ correo: userData.correo });
+        const existingUser = await User.findOne({ email: userData.email });
 
         if (existingUser) {
             return res.status(400).json({ message: "El correo electrónico ya está registrado." });
         }
 
-        const role = await Role.findOne({ name: ROLES.EMPRENDEDOR });
 
-        if (!role) {
-            return res.status(500).json({ message: "Rol 'emprendedor' no encontrado." });
+        const userRole = await Role.findOne({ name: 'emprendedor' });
+        if (!userRole) {
+            return res.status(500).json({ message: "Error al asignar el rol de usuario." });
         }
 
         const newUser = new User({
-            rut: userData.rut,
-            nombre: userData.nombre,
+            username: userData.username,
+            email: userData.email,
             emprendimiento: userData.emprendimiento,
-            correo: userData.correo,
+            rut: userData.rut,
             password: await User.encryptPassword(userData.password),
-            numeroContacto: userData.numeroContacto,
-            rol: [rolEmprendedor._id],
+            roles: [userRole._id]
         });
-        
         await newUser.save();
 
         res.status(201).json({ 
-            message: "Emprendedor registrado exitosamente",
+            message: "Usuario registrado exitosamente",
             data: newUser
         });
     } catch (error) {
