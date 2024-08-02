@@ -8,8 +8,13 @@ import Error404 from './pages/Error404';
 import EditUser from './pages/EditUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import Users from './pages/Users';
+import Asistencia from './pages/Asistencia';
 import Inscripcion from './pages/Inscripcion';
 import EditarEvento from './pages/editarEvento';
+import BuscarEvento from './pages/BuscarEvento';
+import Eventos from './pages/CrearEventos';
+import VerEvento from './pages/ListaEventos';
+import VerEventos from './pages/ListaEventos';
 
 const AppRouter = () => {
   return (
@@ -21,7 +26,13 @@ const AppRouter = () => {
         } 
       />
       <Route 
-        path="/inscripcion" 
+        path="/asistencia/:eventoID" 
+        element={
+          <Asistencia />
+        } 
+      />
+      <Route 
+        path="/inscripciones/inscribir" 
         element={
           <Inscripcion />
         } 
@@ -30,6 +41,21 @@ const AppRouter = () => {
         path="/modificarEvento"
         element={
           <EditarEvento />
+        }
+      />
+      <Route path="/evento/buscar/:nombreEvento" element={<BuscarEvento /> } />
+      <Route
+        path="/evento"
+        element={
+          <ProtectedRoute allowedRoles={['administrador']}>
+            <Eventos />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/verevento"
+        element={
+          <VerEventos />
         }
       />
       <Route path="/login" element={<Login />} />
@@ -46,11 +72,12 @@ const AppRouter = () => {
       <Route 
         path="/users" 
         element={
-         // <ProtectedRoute allowedRoles={['administrador']}>
+         <ProtectedRoute allowedRoles={['administrador']}>
             <Users />
-         // </ProtectedRoute>
+         </ProtectedRoute>
         } 
       />
+    
       <Route 
         path="/profile" 
         element={
