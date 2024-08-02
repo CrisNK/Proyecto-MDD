@@ -87,6 +87,9 @@ const Navbar = ({ isHomePage }) => {
                         <li className={location.pathname === "/perfil" ? "active" : ""}>
                             <NavLink to="/profile">Perfil</NavLink>
                         </li>
+                        <li className={location.pathname === "/Inscripciones" ? "active" : ""}>
+                            <NavLink to="/inscripciones/inscribir">Incribir evento</NavLink>
+                        </li>
                         <li className={location.pathname === "/" ? "active" : ""}>
                             <NavLink to="/" onClick={logoutSubmit}>Cerrar</NavLink>
                         </li>
