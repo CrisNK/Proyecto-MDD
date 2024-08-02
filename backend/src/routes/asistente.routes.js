@@ -4,7 +4,7 @@ import { registrarAsistencia, eliminarAsistencia } from '../controllers/asistent
 
 const router = Router();
 
-router.post('/registrarAsistencia', registrarAsistencia);
+router.post('/:eventoID', registrarAsistencia);
 router.delete('/eliminarAsistencia', eliminarAsistencia);
 
 export default router;

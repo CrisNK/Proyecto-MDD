@@ -1,14 +1,21 @@
 import Form from '../components/Form.jsx';
 import { CrearEvento } from '../services/evento.service.js'
+import { useNavigate } from 'react-router-dom';
 
 function Eventos(){
+    const navigate = useNavigate();
+    
     const EnviarFormulario = async (data) => { // Define una funcion que recibe un parametro data
         try {
             await CrearEvento(data); // Llama a la funcion con el parametro data y espera a que se complete
-            console.log('Evento Creado Existosamente');
+            setTimeout(() => {
+                navigate('/home'); // Redirecciona al usuario después de 1,6 segundos
+            }, 1600);
         } catch (error) {
             console.error('Error al crear evento',error);
         }
+
+ 
     };
     return (
         <main className="container">

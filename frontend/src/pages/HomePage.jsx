@@ -32,11 +32,11 @@ const HomePage = () => {
                         <Link to="/inscripcion" className="carousel-button">Ir a Página 1</Link>
                     </article>
                     <article className="mySlides fade">
-                        <img src="https://via.placeholder.com/1920x600" alt="slide 2" className="carousel-image" />
+                        <img src="Halloween.png" alt="slide 2" className="carousel-image" />
                         <Link to="/inscripcion" className="carousel-button">Ir a Página 2</Link>
                     </article>
                     <article className="mySlides fade">
-                        <img src="https://via.placeholder.com/1920x600" alt="slide 3" className="carousel-image" />
+                        <img src="Primavera.png" alt="slide 3" className="carousel-image" />
                         <Link to="/inscripcion" className="carousel-button">Ir a Página 3</Link>
                     </article>
                 </section>

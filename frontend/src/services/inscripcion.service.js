@@ -1,9 +1,11 @@
 import axios from './root.service.js';
 import { showSuccessAlert, showErrorAlert } from '../helpers/alert.js';
-// Holaaaa
-export async function postAsistencia(data, eventoID) {
+
+export async function postInscripcion(data) {
     try {
-        const response = await axios.post(`/asistente/${eventoID}`, data);
+        console.log('Enviando datos:', data); // Agregar esto para ver los datos que se envían
+        const response = await axios.post('/inscripciones/inscribir', data);
+        console.log('Respuesta del servidor:', response);
         const { status } = response;
 
         if (status === 201) {
@@ -12,10 +14,11 @@ export async function postAsistencia(data, eventoID) {
             showErrorAlert();
         }
 
-        return response;
+        return response.data;
     } catch (error) {
         console.error('Error:', error);
         showErrorAlert();
         throw error.response?.data || error.message;
     }
 }
+
