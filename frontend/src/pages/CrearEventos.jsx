@@ -76,8 +76,6 @@ function Eventos(){
                 buttonText="Crear"
                 onSubmit ={EnviarFormulario}
             />
-            
-
         </main>
     );
 };

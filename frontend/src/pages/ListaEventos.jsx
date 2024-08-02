@@ -35,7 +35,7 @@ function VerEventos() {
           <ul>
             {eventos.map((evento) => (
               <li key={evento._id}>
-                <b >Evento:</b> {evento.nombreEvento}
+                <b>Evento:</b> {evento.nombreEvento}
                 <br></br><b>Descripción:</b> {evento.descripcion}
                 <br></br><b>Ubicacion:</b> {evento.ubicacion}
                 <br></br><b>Fecha:</b> {new Date(evento.fecha).toLocaleDateString("es-ES", {

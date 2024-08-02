@@ -1,3 +1,5 @@
+
+
 .body-verEvento {
 	background-color: #003366; /* Cambia el color de fondo a un gris claro */
     height: 945px;
@@ -15,21 +17,24 @@
     margin: 0 auto; /* Centra el contenedor horizontalmente */
   
   }
-
-  .container-verevento ul li  {
-    list-style-type: disc;
+b{
+  color:#003366;
+}
+  .container-verevento li  {
     background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    column-count: 3; /* Divide la lista en 2 columnas */
-    column-gap: 20px; /* Agrega un espacio entre las columnas */
-    margin-bottom: 20px;
+    column-count: 3; /* Divide la lista en 3 columnas */
+    column-gap: 15px; /* Agrega un espacio entre las columnas */
+    margin-bottom: 30px;
     border-radius: 10px;
     font-size: 20px;
   }
   
   .container-verevento li::marker {
+    list-style-type: disc;
     color:#003366;
     font-size: 30px;
   }
+  
