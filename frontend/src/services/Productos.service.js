@@ -10,11 +10,11 @@ export async function CrearProducto(data) {
 
 }
 
-export async function ObtenerProductos() {
+/*export async function ObtenerProductos() {
     try {
       const response = await axios.get('/productos/obtenerProductos');
       return response.data;
     } catch (error) {
       throw error.response?.data || error.message;
     }
-  }
+  }*/

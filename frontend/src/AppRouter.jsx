@@ -14,8 +14,9 @@ import EditarEvento from './pages/editarEvento';
 import BuscarEvento from './pages/BuscarEvento';
 import Eventos from './pages/CrearEventos';
 import VerEventos from './pages/ListaEventos';
+import VerEvento from './pages/ListaEventos';
 import  CrearProducto  from './pages/CrearProducto';
-import  ObtenerProductos  from './pages/ObtenerProductos';
+//import  ObtenerProductos  from './pages/ObtenerProductos';
 
 const AppRouter = () => {
   return (
@@ -44,12 +45,7 @@ const AppRouter = () => {
           <CrearProducto />
         }
       />
-      <Route
-        path="/productos"
-        element={
-          <ObtenerProductos />
-        }
-      />  
+      
       <Route
         path="/modificarEvento"
         element={
