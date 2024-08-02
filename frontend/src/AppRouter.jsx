@@ -11,7 +11,6 @@ import Users from './pages/Users';
 import Inscripcion from './pages/Inscripcion';
 import EditarEvento from './pages/editarEvento';
 import Eventos from './pages/CrearEventos';
-import VerEvento from './pages/ListaEventos';
 import VerEventos from './pages/ListaEventos';
 
 const AppRouter = () => {
