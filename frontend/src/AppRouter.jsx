@@ -13,7 +13,6 @@ import Inscripcion from './pages/Inscripcion';
 import EditarEvento from './pages/editarEvento';
 import BuscarEvento from './pages/BuscarEvento';
 import Eventos from './pages/CrearEventos';
-import VerEvento from './pages/ListaEventos';
 import VerEventos from './pages/ListaEventos';
 import  CrearProducto  from './pages/CrearProducto';
 import  ObtenerProductos  from './pages/ObtenerProductos';
