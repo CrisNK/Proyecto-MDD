@@ -33,15 +33,14 @@ export const ObtenerEventos = async () => {
     }
 };
 
-
 export async function modificarEventos(data) {
-    try {
-      console.log('Enviando datos:', data);
-      const response = await axios.put(`/evento/update/${data.eventoID}`,data);      
-      return response.data;
-    } catch (error) {
-      throw error.response?.data || error.message;
-    }
+  try {
+    console.log('Enviando datos:', data);
+    const response = await axios.put(`/evento/update/${data.eventoID}`,data);
+    return response;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
 }
 
 export async function BuscarEventos(nombreEvento) {

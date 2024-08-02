@@ -1,5 +1,5 @@
 import axios from './root.service.js';
-import { showSuccessAlert, showErrorAlert } from '../helpers/alert.js';
+import { showSuccessAlert, showErrorAlert, noEncontrado } from '../helpers/alert.js';
 
 export async function postInscripcion(data) {
     try {
@@ -10,7 +10,7 @@ export async function postInscripcion(data) {
 
         if (status === 201) {
             showSuccessAlert();
-        } else {
+        } else{
             showErrorAlert();
         }
 

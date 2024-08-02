@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import Form from "../components/Form";
 import { postInscripcion } from "../services/inscripcion.service";
+import Navbar from '../components/Navbar'
 
 function Inscripcion()  {
 
     const navigate = useNavigate();
-
     const inscripcionSubmit = (data) => {
         console.log('Datos del formulario:', data); // Ver los datos del formulario
         postInscripcion(data).then(() => {
@@ -21,27 +21,35 @@ function Inscripcion()  {
     };
     return (
         <>
+        <Navbar/>
             <Form
                 title="Inscripción"
                 fields={[
                     {
                         label: "Nombre del evento",
                         name: "nombreEvento",
-                        placeholder: "Eventoo",
+                        placeholder: "DISCOTECA BAILABLE",
                         type: "text",
                         required: true,
                     },
                     {
+                        label: "Id del evento",
+                        name: "eventoId",
+                        placeholder: "0123012030",
+                        type: "text",
+                        required: true,
+                    },
+                    /*{
                         label: "Nombre del emprendimiento",
                         name: "nombreEmprendimiento",
                         placeholder: "Los piriwines",
                         type: "text",
-                        required: true,
-                    },
+                        required: false,
+                    },*/
                     {
                         label: "Nombre del emprendedor",
                         name: "nombreEmprendedor",
-                        placeholder: "El piriwin",
+                        placeholder: "Nombre Apellido",
                         type: "text",
                         required: true,
                     },
@@ -55,18 +63,10 @@ function Inscripcion()  {
                     {
                         label: "Numero de contacto",
                         name: "numeroContacto",
-                        placeholder: "Los piriwines",
+                        placeholder: "9XXXXXXXX",
                         type: "number",
                         required: true,
                     },
-                    {
-                        label: "Id del evento",
-                        name: "eventoId",
-                        placeholder: "0123012030",
-                        type: "text",
-                        required: true,
-                    },
-                    
                 ]}
                 buttonText="Inscribirme"
                 onSubmit={inscripcionSubmit}
