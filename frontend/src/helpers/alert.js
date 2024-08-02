@@ -6,7 +6,7 @@ export const showSuccessAlert = () => {
         icon: "success",
         title: "Inscripción enviada!",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 3500,
       });
 }
 
@@ -16,6 +16,16 @@ export const showErrorAlert = () => {
         icon: "error",
         title: "Error al enviar la inscripción!",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 3500,
       });
+}
+
+export const noEncontrado = () => {
+  Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "Evento no encontrado!",
+      showConfirmButton: false,
+      timer: 3500,
+    });
 }
