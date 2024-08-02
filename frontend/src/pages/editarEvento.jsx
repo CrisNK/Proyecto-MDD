@@ -2,23 +2,36 @@ import { useNavigate } from 'react-router-dom';
 import Form from '../components/Form';
 import { modificarEventos } from '../services/evento.service';
 import '../styles/form.css'
+import {showConfirmModEventAlert, showSuccessModEventAlert, showErrorModEventAlert, showInfoModEventAlert } from '../helpers/alert.js';
 
-//import {putEvento} from 
-function EditarEvento(){
-    const navigate = useNavigate();
-
-    const modificaciones = async (data) => {
-        try {
-            const response = await modificarEventos(data);
-            if (response && response.status === 200) { 
+function EditarEvento() {
+        const navigate = useNavigate();
+        const modificaciones = (data) => {
+          showConfirmModEventAlert(
+            async () => {
+              try {
+                const response = await modificarEventos(data);
+                if (response && response.status === 200) {
+                    showSuccessModEventAlert().then(() => {
+                    setTimeout(() => {
+                      navigate('/home');
+                    }, 1600);
+                  });
+                }
+              } catch (error) {
+                console.error('Error:', error);
+                showErrorModEventAlert(error.message);
+              }
+            },
+            () => {
+                showInfoModEventAlert().then(() => {
                 setTimeout(() => {
-                    navigate('/');
+                  navigate('/home');
                 }, 1600);
+              });
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
+          );
+        };
 
     return(
         <div className='form-container'>
@@ -86,7 +99,6 @@ function EditarEvento(){
                 onSubmit={modificaciones}
             />
         </div>
-
     );
 }
 

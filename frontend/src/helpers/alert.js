@@ -48,3 +48,47 @@ export const showErrorCreateEventAlert = () => {
     });
 }
 
+export const showConfirmModEventAlert = (onConfirm, onDeny) => {
+  Swal.fire({
+    icon: "warning",
+    position: "center",
+    title: "¿Estás seguro de que quieres guardar estos cambios?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Guardar",
+    denyButtonText: "No guardar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      onConfirm();
+    } else if (result.isDenied) {
+      onDeny();
+    }
+  });
+};
+
+export const showSuccessModEventAlert = () => {
+  return Swal.fire({
+    icon: "success",
+    title: "Cambios Guardados!",
+    showConfirmButton: true,
+    timer: 1600
+  });
+};
+
+export const showInfoModEventAlert = () => {
+  return Swal.fire({
+    icon: "info",
+    title: "Los cambios no fueron guardados",
+    showConfirmButton: true,
+    timer: 1600
+  });
+};
+
+export const showErrorModEventAlert = (message) => {
+  return Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: message,
+    showConfirmButton: true
+  });
+};

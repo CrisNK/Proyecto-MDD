@@ -71,6 +71,11 @@ const Navbar = ({ isHomePage }) => {
                                 <NavLink to="/evento">Crear Eventos</NavLink>
                             </li>
                         )}
+                        {userRole === 'administrador' && (
+                            <li className={location.pathname === "/modificarEvento" ? "active" : ""}>
+                                <NavLink to="/modificarEvento">Modificar Evento</NavLink>
+                            </li>
+                        )}
                         <li className={location.pathname === "/verevento" ? "active" : ""}>
                             <NavLink to="/verevento">Ver Eventos</NavLink>
                         </li>
