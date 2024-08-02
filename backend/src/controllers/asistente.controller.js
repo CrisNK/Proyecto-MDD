@@ -4,7 +4,8 @@ import Evento from '../models/evento.model.js';
 
 export async function registrarAsistencia(req, res) {
     try {
-        const { eventoID, email, numeroContacto } = req.body;
+        const eventoID = req.params.eventoID;
+        const { email, numeroContacto } = req.body;
 
         // Verificar que el evento exista
         const evento = await Evento.findById(eventoID);

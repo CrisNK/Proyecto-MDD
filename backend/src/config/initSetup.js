@@ -41,7 +41,7 @@ export async function createAdmin() {
     if (count > 0) return;
 
     const admin = await Role.findOne({ name: "administrador" });
-
+    
     await Promise.all([
       new User({
         username: "DDE concepcion",
