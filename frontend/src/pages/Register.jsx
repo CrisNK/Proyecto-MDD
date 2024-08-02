@@ -25,6 +25,12 @@ const Register = () => {
 						placeholder: "",
 						type: "text",
 					},
+					{
+						label: "Nombre emprendimiento",
+                        name: "emprendimiento",
+						placeholder: "",
+                        type: "text",
+                    },
                     {
 						label: "Correo electrónico",
                         name: "email",
@@ -34,7 +40,7 @@ const Register = () => {
                     {
 						label: "RUT",
                         name: "rut",
-                        placeholder: "23.770.330-1",
+                        placeholder: "XX.XXX.XXX-X",
                         type: "text",
                     },
 					{

@@ -66,8 +66,19 @@ const Navbar = ({ isHomePage }) => {
                                 <NavLink to="/users">Usuarios</NavLink>
                             </li>
                         )}
+                        {userRole === 'administrador' && (
+                            <li className={location.pathname === "/evento" ? "active" : ""}>
+                                <NavLink to="/evento">Crear Eventos</NavLink>
+                            </li>
+                        )}
+                        <li className={location.pathname === "/verevento" ? "active" : ""}>
+                            <NavLink to="/verevento">Ver Eventos</NavLink>
+                        </li>
                         <li className={location.pathname === "/perfil" ? "active" : ""}>
                             <NavLink to="/profile">Perfil</NavLink>
+                        </li>
+                        <li className={location.pathname === "/Inscripciones" ? "active" : ""}>
+                            <NavLink to="/inscripciones/inscribir">Incribir evento</NavLink>
                         </li>
                         <li className={location.pathname === "/" ? "active" : ""}>
                             <NavLink to="/" onClick={logoutSubmit}>Cerrar</NavLink>

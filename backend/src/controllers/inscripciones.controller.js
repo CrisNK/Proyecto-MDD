@@ -6,6 +6,7 @@ export async function crearIncripcion(req, res) {
         const eventoId = req.body.eventoId;
         const user = req.user;  // Asegúrate de acceder correctamente a los datos del usuario desde la sesión
         
+        const { body } = req;
         // Validar si el eventoId es válido
         const evento = await Evento.findById(eventoId);
         if (!evento) {
@@ -13,7 +14,7 @@ export async function crearIncripcion(req, res) {
         }
 
         // Verificar si el emprendedor ya está inscrito en este evento
-        const existingInscription = await Form.findOne({ eventoId, nombreEmprendedor: user.nombreEmprendedor});
+        const existingInscription = await Form.findOne({ eventoId, nombreEmprendedor: body.nombreEmprendedor});
         if (existingInscription) {
             return res.status(400).json({ message: "Ya estás inscrito en este evento." });
         }
@@ -21,10 +22,10 @@ export async function crearIncripcion(req, res) {
         // Crear nueva inscripción con los datos del evento
         const newForm = new Form({
             nombreEvento: evento.nombreEvento,
-            nombreEmprendimiento: user.nombreEmprendimiento,
-            nombreEmprendedor: user.nombreEmprendedor,
-            email: user.correo,
-            numeroContacto: user.numeroContacto,
+            nombreEmprendimiento: user.emprendimiento,
+            nombreEmprendedor: body.nombreEmprendedor,
+            email: body.email,
+            numeroContacto: body.numeroContacto,
             eventoId
         });
         await newForm.save();
