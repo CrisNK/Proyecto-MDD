@@ -24,6 +24,10 @@ const Navbar = ({ isHomePage }) => {
         setNombreEvento(event.target.value);
     };
 
+    const goHome = (event) => {
+        navigate('/');
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault(); // Evita el envío por defecto del formulario
         if (nombreEvento.trim()) {
@@ -42,6 +46,8 @@ const Navbar = ({ isHomePage }) => {
                     <img
                         src="/cohete.png"
                         alt="Logo metodología de desarrollo"
+                        onClick={goHome}
+                        style={{cursor:'pointer'}}
                     />
                 </li>
                 <li>
