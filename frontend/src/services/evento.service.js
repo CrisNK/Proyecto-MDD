@@ -55,3 +55,16 @@ export async function BuscarEventos(nombreEvento) {
     throw error.response?.data || error.message;
   }
 }
+
+export async function eliminarEvento(data) {
+  try {
+    const response = await axios.delete(`/evento/delete/${data.eventoID}`);
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error(response.data.message || "Error desconocido.");
+    }
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+}

@@ -70,7 +70,7 @@ export const showSuccessModEventAlert = () => {
   return Swal.fire({
     icon: "success",
     title: "Cambios Guardados!",
-    showConfirmButton: true,
+    showConfirmButton: false,
     timer: 1600
   });
 };
@@ -79,7 +79,7 @@ export const showInfoModEventAlert = () => {
   return Swal.fire({
     icon: "info",
     title: "Los cambios no fueron guardados",
-    showConfirmButton: true,
+    showConfirmButton: false,
     timer: 1600
   });
 };
@@ -90,5 +90,36 @@ export const showErrorModEventAlert = (message) => {
     title: "Error",
     text: message,
     showConfirmButton: true
+  });
+};
+
+export const showDeletedEventAlert = () => {
+  return Swal.fire({
+    title: "¿Estás seguro que deseas eliminar el evento?",
+    text: "¡No podrás revertir esto!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Borrar!"
+  });
+};
+
+export const showSuccessDeletedAlert = () => {
+  return Swal.fire({
+    title: "¡Eliminado!",
+    text: "El evento ha sido eliminado.",
+    icon: "success",
+    showConfirmButton: false,
+    timer: 1600
+  });
+};
+
+export const showInfoDeletedAlert = () => {
+  return Swal.fire({
+    icon: "info",
+    title: "La eliminación fue cancelada",
+    showConfirmButton: false,
+    timer: 1600
   });
 };
