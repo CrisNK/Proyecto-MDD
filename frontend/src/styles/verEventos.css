@@ -15,7 +15,7 @@
   margin: 0 auto;
 }
 
-li {
+.container-verevento li {
   list-style-type: disc;
   background-color: #f0f0f0;
   padding: 20px;
@@ -28,17 +28,17 @@ li {
   font-size: 20px;
 }
   
-li::marker {
+.container-verevento li::marker {
   color:#003366;
   font-size: 30px;
 }
 /* *{
   border: 1px solid red;
 } */
-p {
+.col p {
   margin:0;
 }
-ul {
+.container-verevento ul {
   width: 100%;
 }
 .row {
