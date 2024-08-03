@@ -14,6 +14,8 @@ import EditarEvento from './pages/editarEvento';
 import BuscarEvento from './pages/BuscarEvento';
 import Eventos from './pages/CrearEventos';
 import VerEventos from './pages/ListaEventos';
+import EliminarEvento from './pages/eliminarEvento';
+
 
 const AppRouter = () => {
   return (
@@ -40,6 +42,12 @@ const AppRouter = () => {
         path="/modificarEvento"
         element={
           <EditarEvento />
+        }
+      />
+      <Route
+        path="/eliminarEvento"
+        element={
+          <EliminarEvento />
         }
       />
       <Route path="/evento/buscar/:nombreEvento" element={<BuscarEvento /> } />

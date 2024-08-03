@@ -24,6 +24,10 @@ const Navbar = ({ isHomePage }) => {
         setNombreEvento(event.target.value);
     };
 
+    const goHome = (event) => {
+        navigate('/');
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault(); // Evita el envío por defecto del formulario
         if (nombreEvento.trim()) {
@@ -42,6 +46,8 @@ const Navbar = ({ isHomePage }) => {
                     <img
                         src="/cohete.png"
                         alt="Logo metodología de desarrollo"
+                        onClick={goHome}
+                        style={{cursor:'pointer'}}
                     />
                 </li>
                 <li>
@@ -71,14 +77,21 @@ const Navbar = ({ isHomePage }) => {
                                 <NavLink to="/evento">Crear Eventos</NavLink>
                             </li>
                         )}
+                        {userRole === 'administrador' && (
+                            <li className={location.pathname === "/modificarEvento" ? "active" : ""}>
+                                <NavLink to="/modificarEvento">Modificar Evento</NavLink>
+                            </li>
+                        )}
+                        {userRole === 'administrador' && (
+                            <li className={location.pathname === "/eliminarEvento" ? "active" : ""}>
+                                <NavLink to="/eliminarEvento">Eliminar Evento</NavLink>
+                            </li>
+                        )}
                         <li className={location.pathname === "/verevento" ? "active" : ""}>
                             <NavLink to="/verevento">Ver Eventos</NavLink>
                         </li>
                         <li className={location.pathname === "/perfil" ? "active" : ""}>
                             <NavLink to="/profile">Perfil</NavLink>
-                        </li>
-                        <li className={location.pathname === "/Inscripciones" ? "active" : ""}>
-                            <NavLink to="/inscripciones/inscribir">Incribir evento</NavLink>
                         </li>
                         <li className={location.pathname === "/" ? "active" : ""}>
                             <NavLink to="/" onClick={logoutSubmit}>Cerrar</NavLink>
