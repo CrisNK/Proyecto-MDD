@@ -22,10 +22,10 @@ const formSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    numeroContacto: {
+    /*numeroContacto: {
         type: Number,
         required: true,
-    },
+    },*/
 },
 {
     versionKey: false,

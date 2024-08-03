@@ -75,13 +75,13 @@ const Navbar = ({ isHomePage }) => {
                             <NavLink to="/verevento">Ver Eventos</NavLink>
                         </li>
                         {userRole === 'emprendedor' && (
-                            <li className={location.pathname === "/productos" ? "active" : ""}>
-                                <NavLink to="/productos">Crear Producto</NavLink>
+                            <li className={location.pathname === "/producto/crear" ? "active" : ""}>
+                                <NavLink to="/producto/crear">Crear Producto</NavLink>
                             </li>
                         )}
                         {userRole === 'emprendedor' && (
-                            <li className={location.pathname === "/productos" ? "active" : ""}>
-                                <NavLink to="/productos">Obtener Productos</NavLink>
+                            <li className={location.pathname === "/producto/ObtenerTodos" ? "active" : ""}>
+                                <NavLink to="/producto/ObtenerTodos">Obtener Productos</NavLink>
                             </li>
                         )}
                         <li className={location.pathname === "/perfil" ? "active" : ""}>

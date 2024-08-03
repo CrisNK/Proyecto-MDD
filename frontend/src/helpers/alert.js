@@ -48,3 +48,22 @@ export const showErrorCreateEventAlert = () => {
     });
 }
 
+export const showSuccessAlertProduct = () => {
+  Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Producto creado exitosamente!",
+      showConfirmButton: false,
+      timer: 3500,
+    });
+}
+
+export const showErrorAlertProduct = () => {
+  Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "Error al crear producto!",
+      showConfirmButton: false,
+      timer: 3500,
+    });
+}

@@ -39,13 +39,13 @@ function Inscripcion()  {
                         type: "text",
                         required: true,
                     },
-                    /*{
+                    {
                         label: "Nombre del emprendimiento",
                         name: "nombreEmprendimiento",
                         placeholder: "Los piriwines",
                         type: "text",
                         required: false,
-                    },*/
+                    },
                     {
                         label: "Nombre del emprendedor",
                         name: "nombreEmprendedor",
@@ -60,13 +60,13 @@ function Inscripcion()  {
                         type: "email",
                         required: true,
                     },
-                    {
+                    /*{
                         label: "Numero de contacto",
                         name: "numeroContacto",
                         placeholder: "9XXXXXXXX",
                         type: "number",
                         required: true,
-                    },
+                    },*/
                 ]}
                 buttonText="Inscribirme"
                 onSubmit={inscripcionSubmit}

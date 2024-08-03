@@ -5,15 +5,18 @@ import '../styles/form.css'
 
 function Productos() {
   const navigate = useNavigate();
+
   const productoSubmit = async (data) => {
     try {
-    const response = await CrearProducto(data);
-    if(response && response.status === 200){
-      setTimeout(() => {
-        navigate('/productos');
-      }, 1600);
-    }
-  } catch (error) {
+      const response = await CrearProducto(data);
+      if (response && response.status === 201) {
+        setTimeout(() => {
+          navigate('/home');
+        }, 1600);
+      } else {
+      console.error('Error al crear producto:', response);
+      }
+    } catch (error) {
       console.error('Error al crear producto',error);
     }
   };
@@ -71,6 +74,6 @@ function Productos() {
       />
     </div>
   );
-}
+};
 
 export default Productos;
