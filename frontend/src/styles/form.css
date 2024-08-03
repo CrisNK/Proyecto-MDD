@@ -7,7 +7,7 @@
 
 .form-style {
 	background-color: #eef7ff;
-	padding: 12vh;
+	padding: 6.5vh;
 	display: flex;
 	flex-direction: column;
 	border-radius: 24px;
@@ -55,7 +55,7 @@
 		padding: 1.2vh 0;
 		border-radius: 12px;
 		border: none;
-		width: 25%;
+		width: 100%;
 		background-color: #003366;
 		color: #eef7ff;
 		font-weight: bold;
@@ -72,10 +72,34 @@
 	div {
 		display: flex;
 		flex-direction: column;
-		width: 50%;
+		width: 100%;
 		p {
 			margin: 0;
 			padding: 2vh 0 0 0;
 		}
+	}
+}
+
+.form-InscribirEvento{
+	background-color: #003366;
+	padding: 14vh 20vw 9vh 20vw;
+	div {
+		width: 50%;
+		display: flex;
+	}
+	button {
+		padding: auto;
+		display: flex;
+		justify-content: center;
+		padding: 1.2vh 0;
+		border-radius: 12px;
+		border: none;
+		width: 25%;
+		background-color: #003366;
+		color: #eef7ff;
+		font-weight: bold;
+		font-size: 16px;
+		border: 3px solid #003366;
+		margin-top: 10px;
 	}
 }

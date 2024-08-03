@@ -14,7 +14,8 @@ import EditarEvento from './pages/editarEvento';
 import BuscarEvento from './pages/BuscarEvento';
 import Eventos from './pages/CrearEventos';
 import VerEventos from './pages/ListaEventos';
-import VerEvento from './pages/ListaEventos';
+import EliminarEvento from './pages/eliminarEvento';
+import VerInscripciones from './pages/EliminarInscripcion';
 import  CrearProducto  from './pages/CrearProducto';
 import  ObtenerProductos  from './pages/ObtenerProductos';
 
@@ -51,10 +52,40 @@ const AppRouter = () => {
           <ObtenerProductos />
         }
       />
+        <Route
+        path="/producto/crear"
+        element={
+          <CrearProducto />
+        }
+      />
+      <Route
+        path="/producto/ObtenerTodos"
+        element={
+          <ObtenerProductos />
+        }
+      />
+      <Route 
+        path="/inscripciones/visualizar/" 
+        element={
+          <VerInscripciones />
+        } 
+      />
       <Route
         path="/modificarEvento"
         element={
           <EditarEvento />
+        }
+      />
+      <Route 
+        path="/inscripciones/visualizar/" 
+        element={
+          <VerInscripciones />
+        } 
+      />
+      <Route
+        path="/eliminarEvento"
+        element={
+          <EliminarEvento />
         }
       />
       <Route path="/evento/buscar/:nombreEvento" element={<BuscarEvento /> } />

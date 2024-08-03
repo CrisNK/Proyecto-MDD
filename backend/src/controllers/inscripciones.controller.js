@@ -23,7 +23,7 @@ export async function crearIncripcion(req, res) {
         const newForm = new Form({
             nombreEvento: evento.nombreEvento,
             nombreEmprendimiento: user.emprendimiento,
-            nombreEmprendedor: body.nombreEmprendedor,
+            nombreEmprendedor: user.username,
             email: body.email,
             numeroContacto: body.numeroContacto,
             eventoId
@@ -73,15 +73,16 @@ export async function obtenerAsistentes(req, res) {
 
 export async function visualizarInscripciones(req, res) {
     try {
-        const user = req.session.emprendedor;  // Asegúrate de acceder correctamente a los datos del usuario desde la sesión
+        const user = req.session.user;  // Asegúrate de acceder correctamente a los datos del usuario desde la sesión
 
         if (!user) {
             return res.status(401).json({ message: "No estás autenticado" });
         }
-
+        console.log("Usuario autenticado:", user);
         // Busca todas las inscripciones del emprendedor logueado
-        const forms = await Form.find({ nombreEmprendedor: user.nombreEmprendedor });
-
+        const forms = await Form.find({ nombreEmprendedor: user.username });
+        console.log("Inscripciones encontradas:", forms);
+    
         if(forms.length === 0){
             return res.status(404).json({ message: "No tienes inscripciones a eventos. Inscribete ahora!!"});
         }
