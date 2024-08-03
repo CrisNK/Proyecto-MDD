@@ -31,7 +31,7 @@ function EliminarEvento() {
     };
 
     return (
-        <div className='form-container'>
+        <div className='container'>
             <Form
                 title="Eliminar Evento"
                 fields={[

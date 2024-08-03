@@ -30,7 +30,7 @@ function EditarEvento() {
         };
 
     return(
-          <div className='form-container'>
+          <div className='container'>
               <Form
                   title= "Modificar Evento"
                   fields={[
