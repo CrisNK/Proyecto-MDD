@@ -36,15 +36,15 @@ function VerEventos() {
           <ul>
             {eventos.map((evento) => (
               <li key={evento._id} className="row">
-                <div className="col">
+                <div className="vecol">
                   <p><b>Evento: </b>{evento.nombreEvento}</p>
                   <p><b>Descripción: </b> {evento.descripcion}</p>
                 </div>
-                <div className="col">
+                <div className="vecol">
                   <p><b>Ubicacion: </b> {evento.ubicacion}</p>
                   <p><b>Fecha: </b> {new Date(evento.fecha).toLocaleDateString("es-ES", {year: "numeric", month: "2-digit", day: "2-digit",})}</p>
                 </div>
-                <div className="col">
+                <div className="vecol">
                   <p><b>Hora: </b>{evento.hora}</p>
                 </div>
               </li>
