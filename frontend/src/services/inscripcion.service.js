@@ -7,6 +7,7 @@ export async function postInscripcion(data) {
         const response = await axios.post('/inscripciones/inscribir', data);
         console.log('Respuesta del servidor:', response);
         const { status } = response;
+        
 
         if (status === 201) {
             showSuccessAlert();
@@ -17,7 +18,11 @@ export async function postInscripcion(data) {
         return response.data;
     } catch (error) {
         console.error('Error:', error);
-        showErrorAlert();
+        if(error.response.status === 400){
+            noEncontrado();
+        } else{
+            showErrorAlert();
+        }
         throw error.response?.data || error.message;
     }
 }

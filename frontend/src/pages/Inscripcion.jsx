@@ -9,7 +9,9 @@ function Inscripcion()  {
     const inscripcionSubmit = (data) => {
         console.log('Datos del formulario:', data); // Ver los datos del formulario
         postInscripcion(data).then(() => {
-            navigate('/');
+            setTimeout(() => {
+                navigate('/');
+            }, 1500);
         }).catch((error) => {
             // Verificar el contenido del error
             console.error('Error en la inscripción:', error);
@@ -22,20 +24,21 @@ function Inscripcion()  {
     return (
         <>
         <Navbar/>
+        <div className="form-InscribirEvento">
             <Form
                 title="Inscripción"
                 fields={[
                     {
                         label: "Nombre del evento",
                         name: "nombreEvento",
-                        placeholder: "DISCOTECA BAILABLE",
+                        placeholder: "",
                         type: "text",
                         required: true,
                     },
                     {
                         label: "Id del evento",
                         name: "eventoId",
-                        placeholder: "0123012030",
+                        placeholder: "66ab10b1c459f7ffd5872ccd",
                         type: "text",
                         required: true,
                     },
@@ -71,6 +74,7 @@ function Inscripcion()  {
                 buttonText="Inscribirme"
                 onSubmit={inscripcionSubmit}
             />
+        </div>
         </>
     )
 }

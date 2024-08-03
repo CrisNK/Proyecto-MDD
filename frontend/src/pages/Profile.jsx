@@ -41,6 +41,13 @@ const Profile = () => {
               disabled: true,
             },
             {
+              label: "Nombre de emprendimiento",
+              name: "emprendimiento",
+              type: "text",
+              value: userProfile.emprendimiento,
+              disabled: true,
+            },
+            {
               label: "Correo electrónico",
               name: "email",
               type: "email",

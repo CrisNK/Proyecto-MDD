@@ -2,33 +2,34 @@ import Swal from "sweetalert2";
 
 export const showSuccessAlert = () => {
     Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Inscripción enviada!",
         showConfirmButton: false,
-        timer: 3500,
+        timer: 1500,
       });
 }
 
 export const showErrorAlert = () => {
     Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "error",
         title: "Error al enviar la inscripción!",
         showConfirmButton: false,
-        timer: 3500,
+        timer: 1500,
       });
 }
 
 export const noEncontrado = () => {
   Swal.fire({
-      position: "top-end",
+      position: "center",
       icon: "error",
       title: "Evento no encontrado!",
       showConfirmButton: false,
-      timer: 3500,
+      timer: 1500,
     });
 }
+
 export const ShowCreateEventAlert = () => {
   Swal.fire({
     position: "center",

@@ -15,6 +15,7 @@ import BuscarEvento from './pages/BuscarEvento';
 import Eventos from './pages/CrearEventos';
 import VerEvento from './pages/ListaEventos';
 import VerEventos from './pages/ListaEventos';
+import VerInscripciones from './pages/EliminarInscripcion';
 
 const AppRouter = () => {
   return (
@@ -35,6 +36,12 @@ const AppRouter = () => {
         path="/inscripciones/inscribir" 
         element={
           <Inscripcion />
+        } 
+      />
+      <Route 
+        path="/inscripciones/visualizar/" 
+        element={
+          <VerInscripciones />
         } 
       />
       <Route
